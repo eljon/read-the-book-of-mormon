@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>I Have Read the Book of Mormon</title>
+<meta name="description" content="A tap-to-fill reading chart for all 239 chapters of the Book of Mormon.">
+<meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14181d" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Book of Mormon">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to chart</a>
+
+<header class="topbar">
+  <div class="titles">
+    <h1>I Have Read the <em>Book of Mormon</em></h1>
+    <p class="sub">Tap a piece of a letter to mark a chapter read.</p>
+  </div>
+  <button id="themeBtn" class="icon-btn" type="button" aria-label="Switch color theme" title="Switch color theme">
+    <span aria-hidden="true">◐</span>
+  </button>
+</header>
+
+<section class="progress" aria-label="Reading progress">
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-meta">
+    <strong id="progressCount">0 of 239 chapters</strong>
+    <span id="progressPct">0%</span>
+  </div>
+</section>
+
+<nav class="tabs" role="tablist" aria-label="Views">
+  <button class="tab is-active" id="tabChart" role="tab" aria-selected="true" aria-controls="chartView" type="button">Chart</button>
+  <button class="tab" id="tabList" role="tab" aria-selected="false" aria-controls="listView" type="button">Books</button>
+</nav>
+
+<main id="main">
+  <section id="chartView" role="tabpanel" aria-labelledby="tabChart">
+    <div id="stage" class="stage">
+      <div id="chartWrap" class="chart-wrap"></div>
+    </div>
+    <div class="stage-tools">
+      <p class="hint">Pinch to zoom, drag to pan.</p>
+      <div class="zoom-group" role="group" aria-label="Zoom">
+        <button class="icon-btn" type="button" data-zoom="out" aria-label="Zoom out">&minus;</button>
+        <button class="icon-btn" type="button" data-zoom="reset" aria-label="Reset zoom">Fit</button>
+        <button class="icon-btn" type="button" data-zoom="in" aria-label="Zoom in">+</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="listView" role="tabpanel" aria-labelledby="tabList" hidden></section>
+</main>
+
+<footer class="actionbar">
+  <div class="next" id="nextWrap">
+    <span class="next-label">Up next</span>
+    <strong id="nextChapter">1 Nephi 1</strong>
+  </div>
+  <button id="markNextBtn" class="primary-btn" type="button">Mark read</button>
+  <button id="menuBtn" class="icon-btn" type="button" aria-label="More options" aria-haspopup="dialog">&#8942;</button>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden>
+  <span id="toastText"></span>
+  <button id="undoBtn" class="link-btn" type="button">Undo</button>
+</div>
+
+<dialog id="menuDialog" class="sheet">
+  <form method="dialog">
+    <h2>Options</h2>
+    <p class="sheet-note">Progress is saved on this device only. Copy the backup code to move it to another phone or browser.</p>
+    <label class="field">
+      <span>Backup code</span>
+      <textarea id="backupCode" rows="3" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+    </label>
+    <div class="sheet-row">
+      <button id="copyBtn" class="ghost-btn" type="button">Copy code</button>
+      <button id="restoreBtn" class="ghost-btn" type="button">Restore from code</button>
+    </div>
+    <div class="sheet-row">
+      <button id="resetBtn" class="danger-btn" type="button">Reset all progress</button>
+    </div>
+    <div class="sheet-row end">
+      <button class="primary-btn" value="close" type="submit">Done</button>
+    </div>
+  </form>
+</dialog>
+
+<script type="module" src="src/app.js"></script>
+</body>
+</html>

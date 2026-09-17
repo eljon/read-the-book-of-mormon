@@ -1,0 +1,14 @@
+{
+  "name": "I Have Read the Book of Mormon",
+  "short_name": "Book of Mormon",
+  "description": "A tap-to-fill reading chart for all 239 chapters of the Book of Mormon.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f4ee",
+  "theme_color": "#f7f4ee",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
