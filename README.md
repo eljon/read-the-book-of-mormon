@@ -34,10 +34,15 @@ No build step, no dependencies, no tracking, no network requests.
 The workflow in `.github/workflows/deploy.yml` publishes the repository root on
 every push to the default branch.
 
-The first run enables Pages itself. If the repository blocks that, set it
-manually under **Settings → Pages → Build and deployment → Source: GitHub
-Actions**, then re-run the workflow from the **Actions** tab. Pushes to other
-branches never publish.
+Pages has to be switched on once by hand — the workflow's token is not allowed
+to do it:
+
+1. Go to **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Re-run the latest run from the **Actions** tab, or push again.
+
+After that every push to the default branch publishes automatically. Pushes to
+other branches never publish.
 
 The site is then served at `https://<owner>.github.io/read-the-book-of-mormon/`.
 Every path in the app is relative, so it works from that subdirectory without

@@ -23,10 +23,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # Pages must already be enabled with "GitHub Actions" as its source: the
+      # workflow token cannot turn Pages on for the repository itself.
       - uses: actions/configure-pages@v5
-        # Turns Pages on for the repository if it has not been enabled yet.
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
